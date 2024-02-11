@@ -1,1 +1,1 @@
-# Flash Cardsf
+# Flash Cards app with vue & firebase
