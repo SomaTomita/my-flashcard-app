@@ -1,10 +1,6 @@
-// Import the functions you need from the SDKs you need
+// web app's Firebase configuration
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
 	apiKey: import.meta.env.VITE_API_KEY,
 	authDomain: import.meta.env.VITE_AUTH_DOMAIN,
@@ -13,9 +9,21 @@ const firebaseConfig = {
 	messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
 	appId: import.meta.env.VITE_APP_ID
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Cloud Firestore and get a reference to the service
+// firestore
+import { getFirestore } from "firebase/firestore";
 export const db = getFirestore(app);
+
+
+//auth
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+const auth = getAuth(app);
+
+export const signup = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const signin = (email, password) => {
+  return signInWithEmailAndPassword(auth, email, password);
+};
