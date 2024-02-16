@@ -1,20 +1,36 @@
 <template>
   <div class="container mx-auto p-6">
     <h1 class="text-2xl mb-4">Edit Card</h1>
-	<!-- onMounted で card が実際に設定されるまで、フォームが表示されないようにする -->
+    <!-- onMounted で card が実際に設定されるまで、フォームが表示されないようにする -->
     <div v-if="card">
       <div class="mb-4">
         <label for="question" class="block mb-2">Question:</label>
-        <input type="text" id="question" v-model="card.question" class="border rounded p-2 w-full" />
+        <input
+          type="text"
+          id="question"
+          v-model="card.question"
+          class="border rounded p-2 w-full"
+        />
       </div>
       <div class="mb-4">
         <label for="answer" class="block mb-2">Answer:</label>
-        <input type="text" id="answer" v-model="card.answer" class="border rounded p-2 w-full" />
+        <input
+          type="text"
+          id="answer"
+          v-model="card.answer"
+          class="border rounded p-2 w-full"
+        />
       </div>
-	  <button @click="router.push('/lists')" class="border hover:bg-red-300 font-bold py-2 px-4 rounded">
+      <button
+        @click="router.push('/lists')"
+        class="border hover:bg-red-300 font-bold py-2 px-4 rounded"
+      >
         Cancel
       </button>
-      <button @click="confirmAndUpdate" class="border hover:bg-blue-300 font-bold py-2 px-4 rounded">
+      <button
+        @click="confirmAndUpdate"
+        class="border hover:bg-blue-300 font-bold py-2 px-4 rounded"
+      >
         Update
       </button>
     </div>
@@ -22,10 +38,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { db } from '../firebase';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { ref, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { db } from "../firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 // listsで指定されたカードのドキュメントのidを取得
 const route = useRoute();
@@ -37,7 +53,7 @@ const card = ref(null);
 
 onMounted(async () => {
   try {
-	//　指定のカード情報を取得
+    //　指定のカード情報を取得
     const docRef = doc(db, "cards", cardId);
     const docSnap = await getDoc(docRef);
 
@@ -51,7 +67,6 @@ onMounted(async () => {
   }
 });
 
-
 const confirmAndUpdate = async () => {
   const message = `Are you sure to update this card?
   \nQuestion: "${card.value.question}"\nAnswer: "${card.value.answer}"`;
@@ -61,10 +76,10 @@ const confirmAndUpdate = async () => {
       const cardRef = doc(db, "cards", cardId);
       await updateDoc(cardRef, {
         question: card.value.question,
-        answer: card.value.answer
+        answer: card.value.answer,
       });
-	  // update成功後一覧画面へ
-      router.push('/lists');
+      // update成功後一覧画面へ
+      router.push("/lists");
     } catch (error) {
       console.error("Error updating card:", error);
     }
