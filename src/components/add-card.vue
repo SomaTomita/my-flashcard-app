@@ -14,14 +14,13 @@
   </div>
 </template>
 
-
 <script setup>
-import { ref } from 'vue';
-import { collection, addDoc } from "firebase/firestore"; 
+import { ref } from "vue";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
-const question = ref('');
-const answer = ref('');
+const question = ref("");
+const answer = ref("");
 
 const addFlashcard = async () => {
   try {
@@ -32,10 +31,9 @@ const addFlashcard = async () => {
     });
     console.log("Document written with ID: ", docRef.id);
 
-	// プロパティのリセット
+    // プロパティのリセット
     question.value = "";
     answer.value = "";
-
   } catch (e) {
     console.error("Error adding document: ", e);
   }
