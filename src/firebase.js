@@ -17,13 +17,15 @@ export const db = getFirestore(app);
 
 
 //auth
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 const auth = getAuth(app);
 
-export const signup = (email, password) => {
-  return createUserWithEmailAndPassword(auth, email, password);
+export const signup = async (email, password) => {
+	await createUserWithEmailAndPassword(auth, email, password);
+	await sendEmailVerification(auth.currentUser);
+	return auth.currentUser;
 };
 
 export const signin = (email, password) => {
-  return signInWithEmailAndPassword(auth, email, password);
+	return signInWithEmailAndPassword(auth, email, password);
 };
