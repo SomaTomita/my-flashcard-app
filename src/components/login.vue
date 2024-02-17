@@ -16,7 +16,7 @@
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form class="space-y-6" action="#" method="POST">
+          <form class="space-y-6" @submit.prevent="login">
             <div>
               <label
                 for="email"
@@ -25,8 +25,8 @@
               >
               <div class="mt-2">
                 <input
+                  v-model="email"
                   id="email"
-                  name="email"
                   type="email"
                   autocomplete="email"
                   required
@@ -52,8 +52,8 @@
               </div>
               <div class="mt-2">
                 <input
+                  v-model="password"
                   id="password"
-                  name="password"
                   type="password"
                   autocomplete="current-password"
                   required
@@ -70,6 +70,17 @@
                 Sign in
               </button>
             </div>
+            <div class="mt-4 text-center">
+              <p class="text-sm text-gray-600">
+                Don't have an account?
+                <router-link
+                  to="/signup"
+                  class="font-medium text-indigo-600 hover:text-indigo-500"
+                >
+                  Let's Sign up!
+                </router-link>
+              </p>
+            </div>
           </form>
         </div>
       </div>
@@ -85,6 +96,7 @@ import flashcardLogo from "../assets/flashcardimg.webp";
 
 const email = ref("");
 const password = ref("");
+
 const router = useRouter();
 
 const login = async () => {
