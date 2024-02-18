@@ -101,9 +101,16 @@ const router = useRouter();
 
 const login = async () => {
   try {
-    await signin(email.value, password.value);
-    alert("Signed in successfully!");
-    router.push("/lists");
+    const Credential = await signin(email.value, password.value);
+
+    if (Credential.user.emailVerified) {
+      alert("Signed in successfully!");
+      router.push("/lists");
+    } else {
+      // ログイン時メール未認証の場合、メール認証の画面にリダイレクト
+      alert("Please complete email verification first");
+      router.push("/emailverify");
+    }
   } catch (error) {
     alert(error.message);
   }

@@ -70,8 +70,7 @@ const router = useRouter();
 const register = async () => {
   try {
     await signup(email.value, password.value);
-    alert("Please check your email to verify your account and sign in!!");
-    router.push("/");
+    router.push("/emailverify");
   } catch (error) {
     alert(error.message);
   }

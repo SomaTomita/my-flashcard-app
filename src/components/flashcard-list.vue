@@ -21,7 +21,7 @@
             @click.stop="confirmEdit(card)"
             class="text-xs bg-blue-200 hover:bg-blue-300 text-blue-800 px-2 py-1 rounded"
           >
-            <!-- clickイベントでは.stopで親要素(toffleShowAnswer)の発火を防ぐ -->
+            <!-- clickイベントでは.stopで親要素(toggleShowAnswer)の発火を防ぐ -->
             Edit
           </button>
           <button
