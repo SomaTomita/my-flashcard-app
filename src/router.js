@@ -4,6 +4,7 @@ import Signup from './components/signup.vue';
 import FlashcardList from './components/flashcard-list.vue';
 import AddCard from './components/add-card.vue';
 import EditCard from './components/edit-card.vue';
+import EmailVerify from './components/email-verify.vue';
 
 
 const routes = [
@@ -11,7 +12,8 @@ const routes = [
 	{ path: '/signup', name: 'Signup', component: Signup },
 	{ path: '/lists', name: 'FlashcardList', component: FlashcardList },
 	{ path: '/addcard', name: 'AddCard', component: AddCard },
-	{ path: '/edit/:cardId', name: 'EditCard', component: EditCard }
+	{ path: '/edit/:cardId', name: 'EditCard', component: EditCard },
+	{ path: '/emailverify', name: 'EmailVerify', component: EmailVerify },
 ];
 
 
