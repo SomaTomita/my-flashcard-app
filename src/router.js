@@ -5,6 +5,7 @@ import FlashcardList from './components/flashcard-list.vue';
 import AddCard from './components/add-card.vue';
 import EditCard from './components/edit-card.vue';
 import EmailVerify from './components/email-verify.vue';
+import ResetPassword from './components/reset-password.vue'
 
 
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
 	{ path: '/addcard', name: 'AddCard', component: AddCard },
 	{ path: '/edit/:cardId', name: 'EditCard', component: EditCard },
 	{ path: '/emailverify', name: 'EmailVerify', component: EmailVerify },
+	{ path: '/resetpassword', name: 'ResetPassword', component: ResetPassword },
 ];
 
 

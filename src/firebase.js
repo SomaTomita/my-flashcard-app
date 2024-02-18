@@ -18,7 +18,7 @@ export const db = getFirestore(app);
 
 
 //auth
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth";
 export const auth = getAuth(app);
 
 export const signup = async (email, password) => {
@@ -39,7 +39,11 @@ export const resendVerificationEmail = async () => {
 	return false;
 };
 
-// ユーザーの認証状態を監視する関数
 export const watchAuthState = (onUserChanged) => {
+	// ユーザーの認証状態を監視する関数
 	return onAuthStateChanged(auth, onUserChanged);
 };
+
+export const resetPassword = (email) => {
+	return sendPasswordResetEmail(auth, email);
+}
