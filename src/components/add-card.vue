@@ -16,20 +16,31 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, auth } from "../firebase";
+
+const router = useRouter();
 
 const question = ref("");
 const answer = ref("");
 
 const addFlashcard = async () => {
+  if (!auth.currentUser) {
+    console.error("please login first");
+    router.push("/");
+    return;
+  }
+
   try {
     // Add a new document with a generated id.
     const docRef = await addDoc(collection(db, "cards"), {
+      uid: auth.currentUser.uid,
       question: question.value,
       answer: answer.value,
     });
     console.log("Document written with ID: ", docRef.id);
+    alert("Flashcard added successfully!");
 
     // プロパティのリセット
     question.value = "";
