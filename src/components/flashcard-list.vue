@@ -6,7 +6,7 @@
         v-for="card in cards"
         :key="card.id"
         class="bg-white p-6 rounded-lg shadow-md flex flex-col justify-between h-52 relative"
-        @click="toggleShowAnswer(card)"
+        @click.stop="toggleShowAnswer(card)"
       >
         <!-- カード -->
         <div class="mb-4">
@@ -21,7 +21,6 @@
             @click.stop="confirmEdit(card)"
             class="text-xs bg-blue-200 hover:bg-blue-300 text-blue-800 px-2 py-1 rounded"
           >
-            <!-- clickイベントでは.stopで親要素(toggleShowAnswer)の発火を防ぐ -->
             Edit
           </button>
           <button
@@ -38,8 +37,15 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { db } from "../firebase";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { db, auth } from "../firebase";
+import {
+  collection,
+  getDocs,
+  doc,
+  deleteDoc,
+  query,
+  where,
+} from "firebase/firestore";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -48,11 +54,16 @@ const cards = ref([]);
 
 onMounted(async () => {
   try {
-    // すべてのカードの全ての情報を取得
-    const querySnapshot = await getDocs(collection(db, "cards"));
+    // コレクションからuidに紐づく複数のドキュメントを取得
+    const q = query(
+      collection(db, "cards"),
+      where("uid", "==", auth.currentUser.uid)
+    );
+    const querySnapshot = await getDocs(q);
     cards.value = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
+
       // 初期状態ではanswerを非表示
       showAnswer: false,
     }));

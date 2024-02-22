@@ -8,6 +8,7 @@ import EmailVerify from './components/email-verify.vue';
 import ResetPassword from './components/reset-password.vue'
 
 import { auth } from "./firebase"
+import { onAuthStateChanged } from "firebase/auth";
 
 
 const routes = [
@@ -33,11 +34,16 @@ const router = createRouter({
 });
 
 
-// requiresAuthがあるページはログイン必須
 router.beforeEach((to, from, next) => {
-	const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-	if (requiresAuth && !auth.currentUser) next({ name: 'Login' })
-	else next()
-})
+	onAuthStateChanged(auth, (user) => {
+		// requiresAuthがあるページはログイン必須
+		const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+		if (requiresAuth && !user) {
+			next('/login');
+		} else {
+			next();
+		}
+	});
+});
 
 export default router;
