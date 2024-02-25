@@ -1,21 +1,32 @@
 <template>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class="text-2xl text-center mb-6 text-gray-800">FlashCard List</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <!-- カードが存在しない場合のメッセージ -->
+    <div v-if="cards.length === 0" class="text-center">
+      <p>No card!</p>
+      <p>Let's add a flashcard with the "Add Card" button!</p>
+      <!-- Add Cardボタン -->
+      <button
+        @click="router.push('/addcard')"
+        class="mt-4 bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Add Card
+      </button>
+    </div>
+    <!-- カード一覧 -->
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       <div
         v-for="card in cards"
         :key="card.id"
         class="bg-white p-6 rounded-lg shadow-md flex flex-col justify-between h-52 relative"
         @click.stop="toggleShowAnswer(card)"
       >
-        <!-- カード -->
         <div class="mb-4">
           <p v-if="!card.showAnswer" class="text-lg text-gray-800">
             {{ card.question }}
           </p>
           <p v-else class="text-lg text-gray-800">{{ card.answer }}</p>
         </div>
-        <!-- ボタン -->
         <div class="absolute bottom-2 right-2 flex space-x-2">
           <button
             @click.stop="confirmEdit(card)"
