@@ -6,6 +6,7 @@ import AddCard from './components/add-card.vue';
 import EditCard from './components/edit-card.vue';
 import EmailVerify from './components/email-verify.vue';
 import ResetPassword from './components/reset-password.vue'
+import ErrorPage from "./components/404error.vue"
 
 import { auth } from "./firebase"
 import { onAuthStateChanged } from "firebase/auth";
@@ -25,6 +26,8 @@ const routes = [
 	{
 		path: '/edit/:cardId', name: 'EditCard', component: EditCard, meta: { requiresAuth: true }
 	},
+	// すべてのパスをキャッチ
+	{ path: '/:matchAll(.*)', name: 'Error', component: ErrorPage }
 ];
 
 
