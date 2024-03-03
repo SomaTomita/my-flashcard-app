@@ -14,11 +14,21 @@ const app = initializeApp(firebaseConfig);
 
 // firestore
 import { getFirestore } from "firebase/firestore";
+
 export const db = getFirestore(app);
 
 
 //auth
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth";
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+	sendEmailVerification,
+	onAuthStateChanged,
+	sendPasswordResetEmail,
+	signOut
+} from "firebase/auth";
+
 export const auth = getAuth(app);
 
 export const signup = async (email, password) => {
@@ -29,6 +39,14 @@ export const signup = async (email, password) => {
 
 export const signin = (email, password) => {
 	return signInWithEmailAndPassword(auth, email, password);
+};
+
+export const signoutUser = async () => {
+	if (auth.currentUser) {
+		await signOut(auth);
+		return true;
+	}
+	return false;
 };
 
 export const resendVerificationEmail = async () => {
