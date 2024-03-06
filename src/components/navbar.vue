@@ -72,6 +72,7 @@
                 >Add Card</router-link
               >
               <router-link
+                v-if="isLoggedIn"
                 @click="signout"
                 to="/"
                 class="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
@@ -103,6 +104,7 @@
           >Add Card</router-link
         >
         <router-link
+          v-if="isLoggedIn"
           @click="signout"
           to="/"
           class="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
@@ -114,13 +116,20 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { signoutUser } from "../firebase";
+import { auth, signoutUser } from "../firebase";
 
 const router = useRouter();
 
 const isMobileMenuOpen = ref(false);
+
+const isLoggedIn = ref(false);
+onMounted(() => {
+  auth.onAuthStateChanged((user) => {
+    isLoggedIn.value = !!user;
+  });
+});
 
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
