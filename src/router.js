@@ -9,7 +9,6 @@ import ResetPassword from './components/reset-password.vue'
 import ErrorPage from "./components/404error.vue"
 
 import { auth } from "./firebase"
-import { onAuthStateChanged } from "firebase/auth";
 
 const routes = [
 	{ path: '/', name: 'Login', component: Login },

@@ -8,7 +8,7 @@
       <!-- Add Cardボタン -->
       <button
         @click="router.push('/addcard')"
-        class="mt-4 bg-gray-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        class="mt-4 bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded"
       >
         Add Card
       </button>
@@ -30,13 +30,13 @@
         <div class="absolute bottom-2 right-2 flex space-x-2">
           <button
             @click.stop="confirmEdit(card)"
-            class="text-xs bg-blue-200 hover:bg-blue-300 text-blue-800 px-2 py-1 rounded"
+            class="text-xs bg-cyan-200 hover:bg-cyan-300 text-cyan-800 px-2 py-1 rounded"
           >
             Edit
           </button>
           <button
             @click.stop="confirmDelete(card)"
-            class="text-xs bg-red-200 hover:bg-red-300 text-red-800 px-2 py-1 rounded"
+            class="text-xs bg-gray-200 hover:bg-red-300 text-cyan-800 px-2 py-1 rounded"
           >
             Delete
           </button>
