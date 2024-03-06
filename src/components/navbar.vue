@@ -1,11 +1,11 @@
 <template>
-  <nav class="bg-blue-500">
+  <nav class="bg-cyan-500">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <!-- Mobile menu button -->
         <button
           type="button"
-          class="inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white sm:hidden"
+          class="inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white sm:hidden"
           @click="toggleMobileMenu"
         >
           <svg
@@ -62,20 +62,20 @@
               <router-link
                 @click="toggleMobileMenu"
                 to="/lists"
-                class="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+                class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
                 >Lists</router-link
               >
               <router-link
                 @click="toggleMobileMenu"
                 to="/addcard"
-                class="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+                class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
                 >Add Card</router-link
               >
               <router-link
                 v-if="isLoggedIn"
                 @click="signout"
                 to="/"
-                class="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+                class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
                 >Sign Out</router-link
               >
             </div>
@@ -94,20 +94,20 @@
         <router-link
           @click="toggleMobileMenu"
           to="/lists"
-          class="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+          class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
           >Lists</router-link
         >
         <router-link
           @click="toggleMobileMenu"
           to="/addcard"
-          class="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+          class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
           >Add Card</router-link
         >
         <router-link
           v-if="isLoggedIn"
           @click="signout"
           to="/"
-          class="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+          class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
           >Sign Out</router-link
         >
       </div>

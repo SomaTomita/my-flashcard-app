@@ -22,16 +22,16 @@
         />
       </div>
       <button
-        @click="router.push('/lists')"
-        class="border hover:bg-red-300 font-bold py-2 px-4 rounded"
-      >
-        Cancel
-      </button>
-      <button
         @click="confirmAndUpdate"
-        class="border hover:bg-blue-300 font-bold py-2 px-4 rounded"
+        class="border bg-cyan-200 hover:bg-cyan-300 text-cyan-800 font-bold py-2 px-4 rounded"
       >
         Update
+      </button>
+      <button
+        @click="router.push('/lists')"
+        class="border bg-gray-200 hover:bg-red-300 text-cyan-800 font-bold py-2 px-4 rounded"
+      >
+        Cancel
       </button>
     </div>
   </div>
