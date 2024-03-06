@@ -11,7 +11,6 @@ import ErrorPage from "./components/404error.vue"
 import { auth } from "./firebase"
 import { onAuthStateChanged } from "firebase/auth";
 
-
 const routes = [
 	{ path: '/', name: 'Login', component: Login },
 	{ path: '/signup', name: 'Signup', component: Signup },
@@ -38,15 +37,16 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
-	onAuthStateChanged(auth, (user) => {
-		// requiresAuthがあるページはログイン必須
-		const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-		if (requiresAuth && !user) {
-			next('/login');
-		} else {
-			next();
-		}
-	});
+	const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+	const isAuthenticated = auth.currentUser;
+	if (requiresAuth && !isAuthenticated) {
+		// 認証が必要で、未認証の場合
+		alert("Please login first?");
+		next('/');
+		return;
+	} else {
+		next();
+	}
 });
 
 export default router;

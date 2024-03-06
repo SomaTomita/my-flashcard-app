@@ -139,11 +139,7 @@ const signout = async () => {
   const signedOut = await signoutUser();
   if (signedOut) {
     if (isMobileMenuOpen.value) toggleMobileMenu();
-    router.push("/");
-  } else {
-    // 未ログインの場合は案内表示
-    alert("Please login first?");
-    toggleMobileMenu();
+    alert("Signout in successfully!");
     router.push("/");
   }
 };
