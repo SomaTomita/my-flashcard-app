@@ -10,6 +10,7 @@
           id="question"
           v-model="card.question"
           class="border rounded p-2 w-full"
+          required
         />
       </div>
       <div class="mb-4">
@@ -19,6 +20,7 @@
           id="answer"
           v-model="card.answer"
           class="border rounded p-2 w-full"
+          required
         />
       </div>
       <button

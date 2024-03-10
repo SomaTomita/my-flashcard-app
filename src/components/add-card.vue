@@ -23,6 +23,7 @@
             v-model="question"
             rows="4"
             class="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+            required
             placeholder="Type here..."
           ></textarea>
         </div>
@@ -35,6 +36,7 @@
             v-model="answer"
             rows="4"
             class="mt-1 block w-full rounded-md border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm"
+            required
             placeholder="Type here..."
           ></textarea>
         </div>
