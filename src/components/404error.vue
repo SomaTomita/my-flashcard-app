@@ -20,7 +20,7 @@
           Go back home
         </button>
         <a
-          href="YOUR_GOOGLE_FORM_LINK"
+          href="https://forms.gle/qRJpBZk1xm5HxPeR7"
           class="text-sm font-semibold text-gray-900"
           >Contact support <span aria-hidden="true">&rarr;</span></a
         >
