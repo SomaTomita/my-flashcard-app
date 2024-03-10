@@ -63,6 +63,13 @@
                 class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
                 >Add Card</router-link
               >
+              <a
+                v-if="isLoggedIn"
+                href="https://forms.gle/qRJpBZk1xm5HxPeR7"
+                target="_blank"
+                class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
+                >Contact</a
+              >
               <router-link
                 v-if="isLoggedIn"
                 @click="signout"
@@ -94,6 +101,13 @@
           to="/addcard"
           class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
           >Add Card</router-link
+        >
+        <a
+          v-if="isLoggedIn"
+          href="https://forms.gle/qRJpBZk1xm5HxPeR7"
+          target="_blank"
+          class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
+          >Contact</a
         >
         <router-link
           v-if="isLoggedIn"
