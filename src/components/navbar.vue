@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-cyan-500">
+  <nav class="bg-cyan-600">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <!-- Mobile menu button -->
@@ -52,12 +52,14 @@
             <div class="flex space-x-4">
               <!-- Navigation Links -->
               <router-link
+                v-if="isLoggedIn"
                 @click="toggleMobileMenu"
                 to="/lists"
                 class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
                 >Lists</router-link
               >
               <router-link
+                v-if="isLoggedIn"
                 @click="toggleMobileMenu"
                 to="/addcard"
                 class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
@@ -92,12 +94,14 @@
         <!-- Mobile Navigation Links -->
         <router-link
           @click="toggleMobileMenu"
+          v-if="isLoggedIn"
           to="/lists"
           class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
           >Lists</router-link
         >
         <router-link
           @click="toggleMobileMenu"
+          v-if="isLoggedIn"
           to="/addcard"
           class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
           >Add Card</router-link
@@ -133,7 +137,8 @@ const isMobileMenuOpen = ref(false);
 const isLoggedIn = ref(false);
 onMounted(() => {
   auth.onAuthStateChanged((user) => {
-    isLoggedIn.value = !!user;
+    if (!user || !user.emailVerified) return;
+    isLoggedIn.value = !isLoggedIn.value;
   });
 });
 
@@ -144,6 +149,7 @@ const toggleMobileMenu = () => {
 const signout = async () => {
   const signedOut = await signoutUser();
   if (signedOut) {
+    isLoggedIn.value = !isLoggedIn.value;
     if (isMobileMenuOpen.value) toggleMobileMenu();
     alert("Signout in successfully!");
     router.push("/");
