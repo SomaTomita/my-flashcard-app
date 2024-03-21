@@ -56,7 +56,7 @@
                 @click="toggleMobileMenu"
                 to="/lists"
                 class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
-                >Lists</router-link
+                >List</router-link
               >
               <router-link
                 v-if="isLoggedIn"
@@ -77,7 +77,7 @@
                 @click="signout"
                 to="/"
                 class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
-                >Sign Out</router-link
+                >Signout</router-link
               >
             </div>
           </div>
@@ -118,7 +118,7 @@
           @click="signout"
           to="/"
           class="block text-white hover:bg-cyan-400 px-3 py-2 rounded-md text-base font-medium"
-          >Sign Out</router-link
+          >Signout</router-link
         >
       </div>
     </div>
