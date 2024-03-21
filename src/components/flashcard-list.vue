@@ -1,14 +1,17 @@
 <template>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-2xl text-center mb-6 text-gray-800">FlashCard List</h2>
+    <h2 class="mt-6 mb-4 text-center text-3xl font-extrabold text-gray-900">
+      FlashCard List
+    </h2>
     <!-- カードが存在しない場合のメッセージ -->
     <div v-if="cards.length === 0" class="text-center">
-      <p>No card!</p>
-      <p>Let's add a flashcard with the "Add Card" button!</p>
+      <p class="mt-2 mb-8 text-center text-sm text-gray-600">
+        No card!　Let's add a flashcard with the "Add Card" button below!
+      </p>
       <!-- Add Cardボタン -->
       <button
         @click="router.push('/addcard')"
-        class="mt-4 bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded"
+        class="mt-4 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded"
       >
         Add Card
       </button>
@@ -30,7 +33,7 @@
         <div class="absolute bottom-2 right-2 flex space-x-2">
           <button
             @click.stop="confirmEdit(card)"
-            class="text-xs bg-cyan-200 hover:bg-cyan-300 text-cyan-800 px-2 py-1 rounded"
+            class="text-xs bg-gray-200 hover:bg-cyan-300 text-cyan-800 px-2 py-1 rounded"
           >
             Edit
           </button>

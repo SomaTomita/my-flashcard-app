@@ -14,7 +14,7 @@
         </h2>
       </div>
 
-      <div class="mt-8 pt-5 text-center">
+      <div class="mt-10 pt-5 text-center">
         <p class="text-sm text-cyan-600">Can't find the email?</p>
         <button
           @click="sendVerificationEmail"

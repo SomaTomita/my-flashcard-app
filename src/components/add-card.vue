@@ -53,22 +53,25 @@
         v-if="showDialog"
         class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center"
       >
-        <div class="bg-white rounded-lg shadow-xl p-6 space-y-4">
-          <p class="text-lg font-medium text-gray-900">
+        <div class="bg-white rounded-lg shadow-xl p-8 space-y-4">
+          <h2 class="text-center text-2xl font-extrabold text-gray-600">
             Flashcard added successfully!
+          </h2>
+          <p class="text-center text-sm text-gray-600">
+            Please choose your next action.
           </p>
-          <div class="flex justify-center space-x-4">
+          <div class="p-6 flex justify-center space-x-8">
             <button
               @click="addMore"
-              class="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              class="inline-flex items-center justify-center rounded-md border border-transparent bg-cyan-600 hover:bg-cyan-700 px-4 py-2 text-sm font-medium text-white"
             >
-              Add more
+              Add more card🪪
             </button>
             <button
               @click="backToLists"
-              class="inline-flex justify-center rounded-md border border-transparent bg-green-500 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              class="inline-flex items-center justify-center rounded-md border border-transparent bg-cyan-600 hover:bg-cyan-700 px-4 py-2 text-sm font-medium text-white"
             >
-              Back to lists
+              Back to lists🏠
             </button>
           </div>
         </div>
